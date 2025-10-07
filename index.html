@@ -4,63 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Essential Open Graph tags for video embedding -->
-    <meta property="og:title" content="Video Player">
+    <!-- Open Graph Meta Tags for Discord -->
     <meta property="og:type" content="video.other">
-    <meta property="og:video" content="test.webm">
+    <meta property="og:url" content="https://avrcal.github.io/"> <!-- Replace with your HTML page's URL -->
+    <meta property="og:video" content="https://github.com/avrcal/avrcal.github.io/raw/refs/heads/main/test.webm"> <!-- Your direct video URL -->
     <meta property="og:video:type" content="video/webm">
     <meta property="og:video:width" content="640">
     <meta property="og:video:height" content="360">
-    <meta property="og:url" content="https://avrcal.github.io/test.webm">
     
-    <!-- Twitter Card tags for broader compatibility -->
-    <meta name="twitter:card" content="player">
-    <meta name="twitter:player" content="test.webm">
-    <meta name="twitter:player:width" content="640">
-    <meta name="twitter:player:height" content="360">
-    
-    <title>Video Player</title>
-    
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            background-color: #000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: Arial, sans-serif;
-        }
-        
-        .video-container {
-            max-width: 800px;
-            width: 100%;
-            text-align: center;
-        }
-        
-        video {
-            max-width: 100%;
-            max-height: 80vh;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-        }
-        
-        .video-info {
-            color: #fff;
-            margin-top: 15px;
-            font-size: 14px;
-        }
-    </style>
+    <title>Video Embed</title>
 </head>
 <body>
-    <div class="video-container">
-        <video controls>
-            <source src="test.webm" type="video/webm">
-            Your browser does not support the video tag.
-        </video>
-        <div class="video-info">
-            Click play to view the video
-        </div>
-    </div>
+    <!-- The video element is optional but good for direct page visits -->
+    <video controls width="640" height="360">
+        <source src="https://github.com/avrcal/avrcal.github.io/raw/refs/heads/main/test.webm" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
 </body>
 </html>
