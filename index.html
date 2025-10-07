@@ -4,47 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Open Graph Meta Tags for Discord Embed -->
-    <meta property="og:title" content=" ">
-    <meta property="og:description" content=" ">
+    <!-- Essential Open Graph tags for video embedding -->
+    <meta property="og:title" content="Video Player">
     <meta property="og:type" content="video.other">
     <meta property="og:video" content="test.webm">
     <meta property="og:video:type" content="video/webm">
     <meta property="og:video:width" content="640">
     <meta property="og:video:height" content="360">
-    <meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+    <meta property="og:url" content="https://avrcal.github.io/test.webm">
     
-    <!-- Twitter Card Meta Tags (for broader compatibility) -->
+    <!-- Twitter Card tags for broader compatibility -->
     <meta name="twitter:card" content="player">
-    <meta name="twitter:title" content=" ">
-    <meta name="twitter:description" content=" ">
     <meta name="twitter:player" content="test.webm">
     <meta name="twitter:player:width" content="640">
     <meta name="twitter:player:height" content="360">
     
-    <title>Video Embed</title>
+    <title>Video Player</title>
     
     <style>
-        body {
+        body, html {
             margin: 0;
             padding: 0;
+            height: 100%;
             background-color: #000;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        
+        .video-container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
         }
         
         video {
             max-width: 100%;
-            max-height: 100vh;
+            max-height: 80vh;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+        }
+        
+        .video-info {
+            color: #fff;
+            margin-top: 15px;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
-    <video autoplay loop muted playsinline>
-        <source src="test.webm" type="video/webm">
-        Your browser does not support the video tag.
-    </video>
+    <div class="video-container">
+        <video controls>
+            <source src="test.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-info">
+            Click play to view the video
+        </div>
+    </div>
 </body>
 </html>
