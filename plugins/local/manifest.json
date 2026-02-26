@@ -1,0 +1,7 @@
+{
+  "name": "LocalMessageEdit",
+  "description": "Allows editing any message locally via the context menu.",
+  "author": "cookie",
+  "main": "index.js",
+  "hash": "1"
+}
