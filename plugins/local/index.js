@@ -1,52 +1,52 @@
-import { binder } from "@revenge/mod"; // Basic Revenge/Vendetta imports
 import { findByProps, findByName } from "@vendetta/metro";
 import { after } from "@vendetta/patcher";
+import { Forms } from "@vendetta/ui/components";
 
+const { TextInput } = Forms;
 const MessageStore = findByProps("getMessage", "getMessages");
 const Dispatcher = findByProps("dispatch", "subscribe");
 const ContextMenu = findByName("MessageContextMenu", false);
+const { showInputAlert } = findByProps("showInputAlert");
+
+let patch;
 
 export default {
-    onLoad: () => {
-        this.patch = after("default", ContextMenu, ([{ message }], res) => {
-            // Check if message exists to avoid crashes
-            if (!message) return;
+  onLoad: () => {
+    patch = after("default", ContextMenu, ([{ message }], res) => {
+      // Find the group of items in the context menu
+      const group = res.props.children.props.children;
 
-            // Add the "Edit Locally" button to the context menu
-            res.props.children.push(
-                <ContextMenu.Item
-                    label="Edit Message Locally"
-                    id="edit-locally"
-                    action={() => {
-                        // Trigger input for the new text
-                        showEditModal(message);
-                    }}
-                />
-            );
-        });
-    },
-    onUnload: () => {
-        this.patch?.();
-    }
+      group.push(
+        <Forms.FormRow
+          label="Edit Locally"
+          onPress={() => {
+            showInputAlert({
+              title: "Edit Message Locally",
+              placeholder: "Enter new content",
+              initialValue: message.content,
+              confirmText: "Apply",
+              cancelText: "Cancel",
+              onConfirm: (newContent: string) => {
+                applyLocalChange(message.channel_id, message.id, newContent);
+              },
+            });
+          }}
+        />
+      );
+    });
+  },
+  onUnload: () => {
+    patch?.();
+  },
 };
 
-function showEditModal(message) {
-    // Simplified logic: Use a prompt or a custom modal to get new text
-    const newContent = prompt("Enter new message content:", message.content);
-    
-    if (newContent !== null) {
-        applyLocalChange(message.channel_id, message.id, newContent);
-    }
+function applyLocalChange(channelId: string, messageId: string, content: string) {
+  Dispatcher.dispatch({
+    type: "MESSAGE_UPDATE",
+    message: {
+      ...MessageStore.getMessage(channelId, messageId),
+      content: content,
+      guild_id: MessageStore.getGuildId(channelId),
+    },
+  });
 }
-
-function applyLocalChange(channelId, messageId, newContent) {
-    // Logic to update the local store without sending to Discord servers
-    Dispatcher.dispatch({
-        type: "MESSAGE_UPDATE",
-        message: {
-            ...MessageStore.getMessage(channelId, messageId),
-            content: newContent,
-            guild_id: MessageStore.getGuildId(channelId)
-        }
-    });
-  }
