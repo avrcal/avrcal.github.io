@@ -1,6 +1,6 @@
 {
-	"name": "Cloud Sync",
-	"description": "Syncs your plugins, themes and fonts to the cloud",
+	"name": "system",
+	"description": "shows system info",
 	"authors": [
 		{
 			"name": "cookie",
