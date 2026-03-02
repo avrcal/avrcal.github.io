@@ -3,8 +3,8 @@
 	"description": "Adds a /system slash command to show Android device version and device name",
 	"authors": [
 		{
-			"name": "avrcal",
-			"id": "853550207039832084"
+			"name": "cookie53333",
+			"id": "979605613719982100"
 		}
 	],
 	"main": "src/index.ts",
