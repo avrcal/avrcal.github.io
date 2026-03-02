@@ -1,14 +1,14 @@
 {
-	"name": "System",
-	"description": "Adds a /system slash command to show Android device version and device name",
+	"name": "Cloud Sync",
+	"description": "Syncs your plugins, themes and fonts to the cloud",
 	"authors": [
 		{
-			"name": "cookie53333",
+			"name": "cookie",
 			"id": "979605613719982100"
 		}
 	],
 	"main": "src/index.ts",
 	"vendetta": {
-		"icon": "PhoneIcon"
+		"icon": "LaptopPhoneIcon"
 	}
 }
